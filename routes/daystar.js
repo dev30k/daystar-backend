@@ -5,15 +5,16 @@ dotenv.config();
 
 const router = express.Router();
 
-const TABLE_NAME_STUDENTS = 'student';
-const TABLE_NAME_DEPT = 'dept_heads';
-const TABLE_NAME_PROGRESS = 'progress_table';
+const TABLE_NAME_STUDENTS = 'Students';
+const TABLE_NAME_MAJOR_MINOR = 'Major_Minor';
+const TABLE_NAME_DEPT = 'Dept_Heads';
+const TABLE_NAME_PROGRESS = 'Progress_Table';
 
 const connection = mysql.createConnection({
     host: 'localhost',
-    user: 'root',
-    password: 'Lemuria123',
-    database: 'daystar_grad_sys',
+    user: 'lemurian_root',
+    password: 'Wn5fpmALjwbTD9S',
+    database: 'lemurian_daystar_grad_sys',
     port: "3306"
 
 });
@@ -130,8 +131,8 @@ router.post('/student/login/', async (req, res) => {
 // Regitser a student with the neccesary credentials 
 router.post('/student/register/',async (req,res)=>{
     const sql = 'insert into '+ TABLE_NAME_STUDENTS+
-    '(fullnames,role,adm,phone,nationality,email,start_year,campus,education,password)';
-    await connection.query(sql,[req.body.fullnames,req.body.role,req.body.adm,req.body.phone,req.body.nationality,req.body.email,req.body.start_year,req.body.campus,req.body.education,req.body.password],(err,rows) =>{
+    '(Student_ID,FirstName,MiddleName,LastName,Nationality,Gender,DOB,Campus,Email,Password)';
+    await connection.query(sql,[req.body.admNumber,req.body.firstname,req.body.middlename,req.body.lastname,req.body.nationality,req.body.gender,req.body.dateOfBirth,req.body.email,req.body.password],(err,rows) =>{
         console.log('Connection result error: ' + err);
         console.log('no of records is ' + rows.length);
         res.send("Record has been inserted");
