@@ -1,9 +1,9 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import graduants from './routes/graduants.js'
+const express = require('express');
+const bodyParser = require('body-parser');
+const {router} = require("./src/routes/daystar") ;
+const cors = require('cors');
+const dotenv =  require('dotenv');
 
-
-import cors from 'cors';
 
 const CORS = cors();
 const app = express();
@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 
 
 
-app.use('/daystar_grad_sys/api/v1/', graduants);
+app.use('/daystar_grad_sys/api/v1/', router);
 
 
 app.get('/', (req, res) => res.send('Congratulations you have reached the Daystar_grad_sys API!!!')

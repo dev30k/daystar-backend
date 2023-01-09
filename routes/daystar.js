@@ -1,7 +1,7 @@
-import express from 'express';
-import mysql from 'mysql'
-import multer from 'multer';
-
+const express = require('express');
+const mysql = require('mysql');
+const multer = require('multer');
+dotenv.config();
 
 const router = express.Router();
 
@@ -247,4 +247,4 @@ router.delete('/department/:id', async (req, res) => {
 
 
 
-export default router;
+exports.router = router;
